@@ -1,0 +1,71 @@
+
+
+.img-box {
+    position:absolute;
+    height: 257px;
+    width: 385px;
+    border-bottom-left-radius: 250%;
+    border-bottom-right-radius: 250%;
+    overflow: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card{
+    margin-top: 10px;
+}
+
+ion-card{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    --background: #f4f5f8b8;
+    margin-top: 127px;
+    height: 426px;
+    width: 301px;
+    border-radius: 4%;
+
+}
+
+ion-list{
+    margin-top: 87px;
+}
+
+ion-button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 167px;
+}
+
+
+div>ion-button{
+
+    font-size: 11px;
+    margin: -16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    color: darkblue;
+
+}
+
+ion-text{
+    text-align: center;
+    
+    font-family: system-ui;
+    position: absolute;
+    margin-top: -14px;
+}
+
+.icon{
+    height: 50px;
+}
+
+
+
+
+
