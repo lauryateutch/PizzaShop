@@ -32,6 +32,22 @@
             <ion-button  id="hover-trigger" fill="clear"  [ngClass]="['icon']">
               <ion-icon name="ellipsis-vertical"></ion-icon>
             </ion-button>
+            <ion-popover trigger="hover-trigger" triggerAction="click">
+              <ng-template>
+                <ion-content class="ion-padding">
+                  <ion-list>
+                    <ion-item>
+                      <ion-label>show details <ion-icon name="enter"></ion-icon></ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>liker <ion-icon name="heart"></ion-icon> </ion-label>
+                    </ion-item>
+
+                  </ion-list>
+                  
+                  </ion-content>
+              </ng-template>
+            </ion-popover>
            
 
           </ion-col>
