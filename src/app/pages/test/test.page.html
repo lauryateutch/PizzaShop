@@ -1,9 +1,49 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>test</ion-title>
+    <ion-title>details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-img src="assets/image/pexels-valeria-boltneva-9957551.jpg">
+
+
+  </ion-img>
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>Pizza Salamani Origine</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      In the array of buttons, each button
+       includes properties for its text,
+        and optionally a handler. If a handler returns false then
+         the alert will not automatically be dismissed when the button is clicked.
+          All buttons will show up in the order they have been added to the buttons array from left to right. Note: The right most button (the last one in the array) is the main button.
+
+             Optionally, a role property can be added to a button, such as cancel. If a cancel role is on one of the buttons, then if the alert is dismissed by tapping the backdrop, then it will fire the handler from the button with a cancel role.
+    </ion-card-content>
+
+    
+  </ion-card>
+
+  
+
+  <ion-item>
+    <ion-label>
+      <ion-button (click)="presentAlertbuttons()"  expand="block" >
+        exit
+      </ion-button>
+    </ion-label>
+    <ion-label>
+      <ion-button (click)="presentAlertInputs()" expand="block"  >
+        command
+      </ion-button> 
+    </ion-label>
+    
+  </ion-item>
 
 </ion-content>

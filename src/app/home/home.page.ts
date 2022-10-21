@@ -1,8 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { PopoverComponent } from '../component/popover/popover.component';
 import { CartModalPage } from '../pages/cart-modal/cart-modal.page';
 import { CartService } from '../services/cart.service';
+//import { Component, ViewChild } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-home',
@@ -11,14 +15,19 @@ import { CartService } from '../services/cart.service';
 })
 export class HomePage {
 
+
+
   cart= [];
   products =[];
   cartItemCount: BehaviorSubject<number>;
   @ViewChild('cart',{static: false, read: ElementRef})fab: ElementRef;
+  @ViewChild('popover') popover;
+  isOpen= false;
+  roleMsg:any;
 
 
 
-  constructor(private cartService: CartService,private modalCtrl: ModalController) { 
+  constructor(private cartService: CartService,private modalCtrl: ModalController, public popoverController: PopoverController) { 
 
 
   }
@@ -35,6 +44,28 @@ addToCart(product){
   console.log(product);
   console.log(this.cart);
 }
+
+presentPopoversimple(e:Event){
+  this.popover.event=e;
+  this.isOpen=true;
+}
+
+ async presentPopover(e: Event){
+const popover= await this.popoverController.create({
+  component: PopoverComponent,
+  event: e,
+});
+
+await popover.present();
+const { role} = await popover.onDidDismiss();
+this.roleMsg = `Popover dismissed with role: ${role}`;
+
+
+
+ }
+ 
+
+
 
 
 getColor(country){(2)
@@ -89,6 +120,12 @@ animateCSS(animationName, keepAnimated = false) {
   }
   node.addEventListener('animationend', handleAnimationEnd)
 }
+
+
+
+
+
+
 }
 
 

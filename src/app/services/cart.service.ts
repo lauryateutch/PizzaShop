@@ -8,6 +8,7 @@ export interface Product {
   price: number;
   amount: number;
   country: string;
+  triggers:string;
 }
 
 
@@ -18,13 +19,13 @@ export interface Product {
 export class CartService {
 
   data: Product[] = [
-    { id: 0, name: 'Pizza Salami', price: 8.99, amount: 0 ,country:'italie'},
-    { id: 1, name: 'Pizza Classic', price: 5.49, amount: 0 ,country:'cuba'},
-    { id: 2, name: 'Sliced Bread', price: 4.99, amount: 0, country:'France' },
-    { id: 4, name: 'Shawarma', price: 8.99, amount: 0 ,country:'canada'},
-    { id: 4, name: 'Burger', price: 8.99, amount: 0 ,country:'France'},
-    { id: 3, name: 'Salad', price: 6.99, amount: 0 ,country:'italie' },
-    { id: 4, name: 'Burger', price: 8.99, amount: 0 ,country:'France'},
+    { id: 0, name: 'Pizza Salami', price: 8.99, amount: 0 ,country:'italie',triggers:'salami'},
+    { id: 1, name: 'Pizza Classic', price: 5.49, amount: 0 ,country:'cuba',triggers:'Classic'},
+    { id: 2, name: 'Sliced Bread', price: 4.99, amount: 0, country:'France',triggers:'Sliced Bread' },
+    { id: 3, name: 'Shawarma', price: 8.99, amount: 0 ,country:'canada',triggers:'Shawarma'},
+    { id: 4, name: 'Burger', price: 8.99, amount: 0 ,country:'France',triggers:'Burger'},
+    { id: 5, name: 'Salad', price: 6.99, amount: 0 ,country:'italie' ,triggers:'Salad'},
+    { id: 6, name: 'Sandwitch', price: 8.99, amount: 0 ,country:'France',triggers:'Sandwitch'},
 
 
   ];

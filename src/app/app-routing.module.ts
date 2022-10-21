@@ -17,13 +17,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
   },
   {
-    path: 'test',
+    path: 'detail',
     loadChildren: () => import('./pages/test/test.module').then( m => m.TestPageModule)
   },
   {
     path: 'connection',
     loadChildren: () => import('./pages/connection/connection.module').then( m => m.ConnectionPageModule)
   },
+  {
+    path: 'commands',
+    loadChildren: () => import('./pages/commands/commands.module').then( m => m.CommandsPageModule)
+  },
+  
 ];
 
 @NgModule({
