@@ -1,18 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 
 export interface User {
   username: string;
-  
   password: string;
-  
-  
-  
+   
   }
-
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -29,10 +25,13 @@ export class AuthserviceService {
     {username:'Tonmezeng', password: 'papier'},
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getListUser(){
-    return this.list_user;
+  ListUser:User[]=[]
+
+  getListUser():Observable<User[]>{
+   // return this.list_user;
+   return this.http.get<User[]>('http://localhost:3000/User');
   }
 
 
