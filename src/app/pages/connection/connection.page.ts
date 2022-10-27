@@ -16,6 +16,7 @@ export class ConnectionPage implements OnInit {
   snapForm!: FormGroup;
   listUser!: User[];
   listUser$:Observable<User[]>; 
+  User!: User;
 
   constructor(private formbuilder: FormBuilder, private authService: AuthserviceService) { }
 
@@ -37,6 +38,12 @@ export class ConnectionPage implements OnInit {
   onSubmitForm(){
 
     this.listUser$= this.authService.getListUser();
+    console.log(this.listUser$);
+    //console.log(this.snapForm);
+    
+    /* this.listUser$.forEach(this.snapForm => {
+      
+    }); */
 
     
 

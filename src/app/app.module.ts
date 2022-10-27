@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopoverComponent } from './component/popover/popover.component';
 import { ListCommandComponent } from './component/list-command/list-command.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent,PopoverComponent,ListCommandComponent],
@@ -18,7 +19,8 @@ import { ListCommandComponent } from './component/list-command/list-command.comp
      IonicModule.forRoot(), 
      AppRoutingModule,
      ReactiveFormsModule,
-     FormsModule
+     FormsModule,
+     HttpClientModule
 
 ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
