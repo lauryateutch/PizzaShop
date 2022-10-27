@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
   },
   {
-    path: 'detail',
+    path: 'home/id',
     loadChildren: () => import('./pages/test/test.module').then( m => m.TestPageModule)
   },
   {
@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: 'commands',
     loadChildren: () => import('./pages/commands/commands.module').then( m => m.CommandsPageModule)
+  },
+  {
+    path: 'menu-cart',
+    loadChildren: () => import('./pages/menu-cart/menu-cart.module').then( m => m.MenuCartPageModule)
   },
   
 ];

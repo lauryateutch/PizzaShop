@@ -41,6 +41,18 @@ export class CartService {
     return this.data;
   }
 
+  getProductById(productiD:number){
+
+    const product= this.data.find(product=> product.id ===productiD);
+    if (!product){
+      throw new Error('Product not found');
+
+    }else{
+
+      return product;
+    }
+  }
+
   getCart() {
     return this.cart;
 

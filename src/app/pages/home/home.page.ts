@@ -1,9 +1,10 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
-import { PopoverComponent } from '../component/popover/popover.component';
-import { CartModalPage } from '../pages/cart-modal/cart-modal.page';
-import { CartService } from '../services/cart.service';
+import { PopoverComponent } from '../../component/popover/popover.component';
+import { CartModalPage } from '../cart-modal/cart-modal.page';
+import { CartService, Product } from '../../services/cart.service';
 //import { Component, ViewChild } from '@angular/core';
 
 
@@ -19,6 +20,7 @@ export class HomePage {
 
   cart= [];
   products =[];
+  product: Product;
   cartItemCount: BehaviorSubject<number>;
   @ViewChild('cart',{static: false, read: ElementRef})fab: ElementRef;
   @ViewChild('popover') popover;
@@ -27,7 +29,7 @@ export class HomePage {
 
 
 
-  constructor(private cartService: CartService,private modalCtrl: ModalController, public popoverController: PopoverController) { 
+  constructor(private cartService: CartService,private modalCtrl: ModalController, public popoverController: PopoverController,private router: Router) { 
 
 
   }
@@ -60,13 +62,8 @@ await popover.present();
 const { role} = await popover.onDidDismiss();
 this.roleMsg = `Popover dismissed with role: ${role}`;
 
-
-
  }
  
-
-
-
 
 getColor(country){(2)
 
@@ -81,12 +78,8 @@ getColor(country){(2)
       return 'red';
 
     case 'canada':
-      return 'yellow';
-  
-    
+      return 'yellow';  
   }
-  
-
 
 }
 
@@ -119,6 +112,12 @@ animateCSS(animationName, keepAnimated = false) {
     node.removeEventListener('animationend', handleAnimationEnd)
   }
   node.addEventListener('animationend', handleAnimationEnd)
+}
+
+
+viewItem(id){
+
+  this.router.navigateByUrl(`home/${this.product.id}`);
 }
 
 

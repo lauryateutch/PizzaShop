@@ -1,6 +1,49 @@
 <ion-app>
 
-  <!-- <div class="toolbar">
+  <ion-split-pane contentId="menu">
+      <ion-menu contentId="menu" menuId="menuhome" side="start" type="push">
+        <ion-header>
+          <ion-toolbar color="tertiary">
+            <ion-title>Menu</ion-title>
+          </ion-toolbar>
+        </ion-header>
+
+
+
+        <ion-content>
+          <ion-menu-toggle>
+            <ion-item>
+              <ion-label>mon premier</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle>
+            <ion-item>
+              <ion-label>mon premier</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle>
+            <ion-item>
+              <ion-label>mon premier</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-content>
+      </ion-menu>
+      
+      <ion-router-outlet id="menu"> </ion-router-outlet>
+
+  </ion-split-pane>
+
+ 
+
+
+ 
+</ion-app>
+
+
+
+ <!-- <div class="toolbar">
 
     <img src="assets/icon/favicon.png" alt="angular logo">
     <span> Angular Tutorials </span>
@@ -30,7 +73,3 @@
 
   </div>
  -->
-
-
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>

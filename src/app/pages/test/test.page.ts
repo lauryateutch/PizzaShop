@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { CartService, Product } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-test',
@@ -11,11 +12,15 @@ export class TestPage implements OnInit {
 handlerMessage= '';
 roleMessage= '';
 textMessage= '';
+product: Product;
 
 
-  constructor(private alertController: AlertController, private router:Router) { }
+  constructor(private alertController: AlertController, private router:Router, private route: ActivatedRoute, private cartService: CartService) { }
 
   ngOnInit() {
+    const productiD= +this.route.snapshot.params['id'];
+   this.product= this.cartService.getProductById(productiD);
+
   }
 
 
