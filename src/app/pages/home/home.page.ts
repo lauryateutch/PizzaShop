@@ -1,10 +1,11 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, PopoverController } from '@ionic/angular';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { PopoverComponent } from '../../component/popover/popover.component';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
-import { CartService, Product } from '../../services/cart.service';
+import { CartService,  } from '../../services/cart.service';
+import { Product } from 'src/app/models/product';
 //import { Component, ViewChild } from '@angular/core';
 
 
@@ -17,10 +18,11 @@ import { CartService, Product } from '../../services/cart.service';
 export class HomePage {
 
 
-
+  //@Input() faceSnap !: FaceSnap;
   cart= [];
-  products =[];
-  product: Product;
+   //products =[];
+   //product: Product;
+  products$:Observable <Product[]>;
   cartItemCount: BehaviorSubject<number>;
   @ViewChild('cart',{static: false, read: ElementRef})fab: ElementRef;
   @ViewChild('popover') popover;
@@ -35,9 +37,11 @@ export class HomePage {
   }
 
 ngOnInit(){
-  this.products= this.cartService.getProducts();
+  
   this.cart= this.cartService.getCart();
   this.cartItemCount= this.cartService.getCartItemCount();
+
+   this.products$= this.cartService.getAllProducts();
 }
 
 addToCart(product){
@@ -115,10 +119,10 @@ animateCSS(animationName, keepAnimated = false) {
 }
 
 
-viewItem(id){
+ viewItem(id){
 
-  this.router.navigateByUrl(`home/${this.product.id}`);
-}
+  this.router.navigateByUrl(`home/${id}`);
+} 
 
 
 

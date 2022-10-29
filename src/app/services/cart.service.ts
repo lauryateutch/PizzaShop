@@ -1,16 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Product } from '../models/product';
 
-
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  amount: number;
-  country: string;
-  triggers:string;
-}
-
+ 
 
 
 @Injectable({
@@ -18,30 +11,27 @@ export interface Product {
 })
 export class CartService {
 
-  data: Product[] = [
-    { id: 0, name: 'Pizza Salami', price: 8.99, amount: 0 ,country:'italie',triggers:'salami'},
-    { id: 1, name: 'Pizza Classic', price: 5.49, amount: 0 ,country:'cuba',triggers:'Classic'},
-    { id: 2, name: 'Sliced Bread', price: 4.99, amount: 0, country:'France',triggers:'Sliced Bread' },
-    { id: 3, name: 'Shawarma', price: 8.99, amount: 0 ,country:'canada',triggers:'Shawarma'},
-    { id: 4, name: 'Burger', price: 8.99, amount: 0 ,country:'France',triggers:'Burger'},
-    { id: 5, name: 'Salad', price: 6.99, amount: 0 ,country:'italie' ,triggers:'Salad'},
-    { id: 6, name: 'Sandwitch', price: 8.99, amount: 0 ,country:'France',triggers:'Sandwitch'},
-
-
-  ];
-
-  
-
   private cart = [];
   private cartItemCount = new BehaviorSubject(0);
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getProducts() {
-    return this.data;
+ 
+
+  getAllProducts():Observable<Product[]> {
+    return this.http.get<Product[]>('http://localhost:3000/Products');
   }
 
-  getProductById(productiD:number){
+  getProductById(id: number):Observable<Product>{
+     
+    return this.http.get<Product>('http://localhost:3000/Products'+ id );
+
+  }
+
+
+
+
+ /*  getProductById(productiD:number){
 
     const product= this.data.find(product=> product.id ===productiD);
     if (!product){
@@ -51,7 +41,7 @@ export class CartService {
 
       return product;
     }
-  }
+  } */
 
   getCart() {
     return this.cart;

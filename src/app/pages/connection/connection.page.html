@@ -29,14 +29,24 @@
 
           <ion-list>
             <ion-item>
-              <ion-input type="text" placeholder="Email or username" formControlName="username"></ion-input>
+              <ion-input type="text" placeholder="username" formControlName="username"></ion-input>
+             
             </ion-item>
+            <div *ngIf="userName.errors !== null && userName.errors.maxlength ">
+              <p>username must be at least 6 characters </p>  
+         </div> 
+            
             <ion-item>
               <ion-input type="text" placeholder="Password" formControlName="password"></ion-input>
               <ion-label slot="end">
                 <ion-icon name="eye"></ion-icon>
               </ion-label>
             </ion-item>
+            <div *ngIf="password.errors !== null && password.errors.maxlength">
+              <p>password must be at least 8 characters </p>   
+           </div>
+            
+            
           </ion-list>
 
           <ion-item lines="none">
@@ -55,7 +65,7 @@
 
 
 
-        <ion-button class="button" type="submit" (click)="onSubmitForm()" shape="round">
+        <ion-button class="button" type="submit" (click)="onSubmitForm()" [disabled]="snapForm.invalid"  shape="round">
           Sign In
         </ion-button>
 
