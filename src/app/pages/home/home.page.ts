@@ -6,6 +6,7 @@ import { PopoverComponent } from '../../component/popover/popover.component';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { CartService,  } from '../../services/cart.service';
 import { Product } from 'src/app/models/product';
+import { map } from 'rxjs/operators';
 //import { Component, ViewChild } from '@angular/core';
 
 
@@ -18,10 +19,9 @@ import { Product } from 'src/app/models/product';
 export class HomePage {
 
 
-  //@Input() faceSnap !: FaceSnap;
+ 
   cart= [];
-   //products =[];
-   //product: Product;
+  data$:Observable <Product[]>;
   products$:Observable <Product[]>;
   cartItemCount: BehaviorSubject<number>;
   @ViewChild('cart',{static: false, read: ElementRef})fab: ElementRef;
@@ -40,8 +40,8 @@ ngOnInit(){
   
   this.cart= this.cartService.getCart();
   this.cartItemCount= this.cartService.getCartItemCount();
-
-   this.products$= this.cartService.getAllProducts();
+  this.products$= this.cartService.getAllProducts();
+  this.data$= this.cartService.getAllProducts();
 }
 
 addToCart(product){
@@ -124,7 +124,22 @@ animateCSS(animationName, keepAnimated = false) {
   this.router.navigateByUrl(`home/${id}`);
 } 
 
+filterpizza(event){
+const query= event.target.value.toLowerCase();
+this.products$= this.data$.pipe(
+  map(products=>
+      products.filter(product=>
+        product.name.toLowerCase().indexOf(query)>-1
+        )
 
+    
+  
+    
+    )
+)
+
+   
+}
 
 
 

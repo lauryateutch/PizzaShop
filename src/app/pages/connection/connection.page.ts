@@ -61,14 +61,16 @@ export class ConnectionPage implements OnInit {
 
  }
 
-
-
 get userName() {
     return this.snapForm.get('username');
  }
  get password() {
     return this.snapForm.get('password');
- }  
+ } 
+ 
+ 
+
+ 
 
 
 

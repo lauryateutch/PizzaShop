@@ -5,6 +5,9 @@
       <ion-menu-button  menu="menuhome"></ion-menu-button>
     </ion-buttons> 
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar   [debounce]="250"  (ionChange)="filterpizza($event)" placeholder="search your pizza " show-clear-button="always" clear-icon="trash-bin" ></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
