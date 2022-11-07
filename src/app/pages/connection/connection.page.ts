@@ -21,14 +21,15 @@ export class ConnectionPage implements OnInit {
   User!: User;
   User$:Observable<User>;
   isConnected: boolean;
+  error:string;
 
   constructor(private formbuilder: FormBuilder, private authService: AuthserviceService, private router: Router) { }
 
   ngOnInit():void {
 
     this.snapForm=this.formbuilder.group({
-      username:[null,[Validators.required,Validators.maxLength(6)]],
-      password:[null,[Validators.required,Validators.maxLength(8)]]
+      username:[null,[Validators.required,Validators.minLength(5)]],
+      password:[null,[Validators.required,Validators.minLength(3)]]
 
     },
     {
@@ -45,26 +46,18 @@ export class ConnectionPage implements OnInit {
 
   this.authService.findUser(this.snapForm.value).subscribe((value)=>{
     this.User= value;
-    console.log(this.User + 'hello');
-    if(this.User!==null)
-    this.authService.generateToken();
-  this.router.navigateByUrl('/home');
+    console.log(this.User);
+    if(this.User)
+      this.authService.generateToken();
+      this.router.navigateByUrl('/home');
+    this.error='veuillez vérifier votre username ou password!!!';
+    
   
     
   })
- /*  this.authService.findUser(this.snapForm.value).pipe(
-    tap(()=>
-    
-    {
-      if (this.User$ == null)
-      console.log(this.User$);
-       this.router.navigateByUrl('/home');
-       this.router.navigateByUrl('/connection');
 
-         
-    }
-    )
-  ) */ 
+    
+
 
  }
 

@@ -32,8 +32,8 @@
               <ion-input type="text" placeholder="username" formControlName="username"></ion-input>
              
             </ion-item>
-            <div *ngIf="userName.errors !== null && userName.errors.maxlength ">
-              <p>username must be at least 6 characters </p>  
+            <div *ngIf="userName.errors !== null && userName.errors.minlength ">
+              <p style="color: red;">username must minimun be 4 characters </p>  
          </div> 
             
             <ion-item>
@@ -42,8 +42,8 @@
                 <ion-icon name="eye"></ion-icon>
               </ion-label>
             </ion-item>
-            <div *ngIf="password.errors !== null && password.errors.maxlength">
-              <p>password must be at least 8 characters </p>   
+            <div *ngIf="password.errors !== null && password.errors.minlength">
+              <p style="color: red;">password must minimun be 3 characters </p>   
            </div>
             
             
@@ -59,6 +59,7 @@
 
 
         </ion-card-content>
+         <p style="color: red;">  {{error}}</p>
 
 
 
