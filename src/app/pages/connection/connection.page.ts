@@ -47,11 +47,16 @@ export class ConnectionPage implements OnInit {
   this.authService.findUser(this.snapForm.value).subscribe((value)=>{
     this.User= value;
     console.log(this.User);
-    if(this.User)
+    if(this.User){
       this.authService.generateToken();
       this.authService.generateCookie(this.User);
       this.router.navigateByUrl('/home');
-    this.error='veuillez vérifier votre username ou password!!!';
+    }else{
+      this.error='veuillez vérifier votre username ou password!!!';
+    }
+      
+
+    
     
   
     

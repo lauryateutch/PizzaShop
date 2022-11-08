@@ -14,12 +14,12 @@ export class LoginGuard implements CanActivate {
     
     
     const token= this.auth.generateToken();
-    if(!token) {
-   return true;
+    if(token) {
+   return false;
  }else{
 
    this.router.navigateByUrl('/home')
-   return false;
+   return true;
    
  }
   }
