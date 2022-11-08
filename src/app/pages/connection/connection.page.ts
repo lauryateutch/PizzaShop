@@ -3,9 +3,10 @@ import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/services/authservice.service';
+//import { User } from 'src/app/services/authservice.service';
 import { AuthserviceService } from 'src/app/services/authservice.service';
 import {filter, map, tap} from  'rxjs/operators';
+import { User } from 'src/app/models/User';
 
 
 @Component({
@@ -37,8 +38,7 @@ export class ConnectionPage implements OnInit {
     }
     
     );
-
-    
+  
 
   }
 
