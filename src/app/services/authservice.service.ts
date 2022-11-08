@@ -29,6 +29,7 @@ export class AuthserviceService {
    private user1= new User();
   private token!: string;
   private UserInfoConnection= new BehaviorSubject(this.user1);
+  private logoutmessage= new BehaviorSubject('ooops vous vous êtes déconnectés');
  
 
   getListUser():Observable<User[]>{
@@ -54,6 +55,10 @@ export class AuthserviceService {
 
   getUserInfoConnection(){
   return this.UserInfoConnection;
+  }
+
+  getLogoutMessage(){
+    return this.logoutmessage;
   }
 
   generateCookie(user: User){

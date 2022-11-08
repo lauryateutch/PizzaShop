@@ -6,6 +6,7 @@ import { PopoverComponent } from '../../component/popover/popover.component';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { CartService,  } from '../../services/cart.service';
 import { Product } from 'src/app/models/product';
+import { AuthserviceService } from 'src/app/services/authservice.service';
 //import { Component, ViewChild } from '@angular/core';
 
 
@@ -18,11 +19,9 @@ import { Product } from 'src/app/models/product';
 export class HomePage {
 
 
-  //@Input() faceSnap !: FaceSnap;
   cart= [];
-   //products =[];
-   //product: Product;
   products$:Observable <Product[]>;
+  logoutmessage: BehaviorSubject<String>;
   cartItemCount: BehaviorSubject<number>;
   @ViewChild('cart',{static: false, read: ElementRef})fab: ElementRef;
   @ViewChild('popover') popover;
@@ -31,7 +30,7 @@ export class HomePage {
 
 
 
-  constructor(private cartService: CartService,private modalCtrl: ModalController, public popoverController: PopoverController,private router: Router) { 
+  constructor(private cartService: CartService,private modalCtrl: ModalController, public popoverController: PopoverController,private router: Router,private authService: AuthserviceService) { 
 
 
   }
@@ -40,8 +39,8 @@ ngOnInit(){
   
   this.cart= this.cartService.getCart();
   this.cartItemCount= this.cartService.getCartItemCount();
-
    this.products$= this.cartService.getAllProducts();
+  
 }
 
 addToCart(product){

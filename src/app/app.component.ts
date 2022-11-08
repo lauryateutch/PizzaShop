@@ -11,7 +11,9 @@ import { AuthserviceService } from './services/authservice.service';
 export class AppComponent implements OnInit {
   title= 'comprendre les directives ngstyle et ngclass'
   UserInfoConnection: BehaviorSubject<User>;
+  logoutmessage: BehaviorSubject<String>;
   user: User;
+  
 
 
   constructor(private authServive:AuthserviceService) {}
@@ -22,6 +24,14 @@ export class AppComponent implements OnInit {
       this.user= value
       
       )
+
+  }
+
+  displaymessage(){
+  this.logoutmessage= new BehaviorSubject('ooops vous vous êtes déconnectés');
+  console.log('message affiché');
+   // this.logoutmessage= this.authServive.getLogoutMessage();
+   
 
   }
 
