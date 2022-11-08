@@ -1,8 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { element } from 'protractor';
 import { map } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+
 
 
 
@@ -12,6 +15,12 @@ export interface User {
    
   }
 
+@NgModule({
+  providers:[
+    CookieService
+  ]
+})  
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,21 +29,15 @@ export interface User {
 
 export class AuthserviceService {
 
-  list_user: User[]=[
-    {username:'Ateutchia', password: 'amour'},
-    {username:'Laura', password: 'love'},
-    {username:'Michèle', password: 'laura'},
-    {username:'Tonmezeng', password: 'papier'},
-  ];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookie : CookieService, private router: Router) { }
 
-  ListUser:User[]=[]
+ 
   private token!: string;
  
 
   getListUser():Observable<User[]>{
-   // return this.list_user;
+   
    return this.http.get<User[]>('http://localhost:3000/User');
   }
 
@@ -49,16 +52,27 @@ export class AuthserviceService {
     )
 
     
+
     
   }
 
-generateToken(){
-  this.token= 'MyToken';
+  generateCookie(user: User){
+ 
+    this.cookie.set(
+      'USERNAME',
+      user.username,
+
+    )
+  }  
+
+
+generateToken():string{
+  if (this.cookie.get('USERNAME'))
+      return this.token='MyToken';
+  this.router.navigateByUrl('/connection');
 }
 
-getToken():string{
-  return this.token;
-}
+
 
 
 

@@ -23,7 +23,7 @@ export class ConnectionPage implements OnInit {
   isConnected: boolean;
   error:string;
 
-  constructor(private formbuilder: FormBuilder, private authService: AuthserviceService, private router: Router) { }
+  constructor(private formbuilder: FormBuilder, private authService: AuthserviceService, private router: Router,) { }
 
   ngOnInit():void {
 
@@ -49,6 +49,7 @@ export class ConnectionPage implements OnInit {
     console.log(this.User);
     if(this.User)
       this.authService.generateToken();
+      this.authService.generateCookie(this.User);
       this.router.navigateByUrl('/home');
     this.error='veuillez vérifier votre username ou password!!!';
     
