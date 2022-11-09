@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-cart',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuCartPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,6 +24,11 @@ export class MenuCartPage implements OnInit {
     console.log( 'voici le texte décrypté '+bytes);
     var originalText= bytes.toString(CryptoJs.enc.Utf8);
     console.log('voici le texte originale'+ originalText);
+  }
+
+  previouspage(){
+this.router.navigateByUrl('/home');
+
   }
 
 }
