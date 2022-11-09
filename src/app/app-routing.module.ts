@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'connection',
-    loadChildren: () => import('./pages/connection/connection.module').then( m => m.ConnectionPageModule)
+    loadChildren: () => import('./pages/connection/connection.module').then( m => m.ConnectionPageModule),canActivate:[LoginGuard]
   },
   {
     path: 'commands',
