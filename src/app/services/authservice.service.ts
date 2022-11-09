@@ -74,7 +74,7 @@ export class AuthserviceService {
 generateToken():string{
   if (this.cookie.get('USERNAME'))
       return this.token='MyToken';
-  this.router.navigateByUrl('/connection');
+  //this.router.navigateByUrl('/connection')
 }
 
 
