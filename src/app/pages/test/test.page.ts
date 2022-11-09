@@ -31,6 +31,11 @@ constructor(private alertController: AlertController, private router:Router, pri
     )
   }
 
+  previouspage(){
+    this.router.navigateByUrl('/home');
+    
+      }
+
  
    
   
