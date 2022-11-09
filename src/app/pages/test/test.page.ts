@@ -25,6 +25,7 @@ constructor(private alertController: AlertController, private router:Router, pri
     this.cartService.getProductById(productid).subscribe((value)=>
     {
       this.product=value;
+      console.log(this.product);
     }
     )
   }

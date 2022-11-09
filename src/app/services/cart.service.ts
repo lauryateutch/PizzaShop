@@ -24,7 +24,7 @@ export class CartService {
 
   getProductById(id: number):Observable<Product>{
      
-    return this.http.get<Product>('http://localhost:3000/Products'+ id );
+    return this.http.get<Product>('http://localhost:3000/Products/'+ id );
 
   }
 
