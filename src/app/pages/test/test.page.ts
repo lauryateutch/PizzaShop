@@ -22,6 +22,7 @@ constructor(private alertController: AlertController, private router:Router, pri
 
   ngOnInit() {
     const productid= +this.route.snapshot.params['id'];
+
     this.cartService.getProductById(productid).subscribe((value)=>
     {
       this.product=value;
@@ -29,6 +30,12 @@ constructor(private alertController: AlertController, private router:Router, pri
     }
     )
   }
+
+ 
+   
+  
+
+  
 
 
   async presentAlert(){
@@ -114,4 +121,8 @@ await alert.present();
 
 }
 
+
+function onionViewWillEnter() {
+  throw new Error('Function not implemented.');
+}
 
