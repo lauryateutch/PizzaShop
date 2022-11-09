@@ -21,6 +21,7 @@
     "@angular/router": "^14.0.0",
     "@ionic/angular": "^6.3.2",
     "animate.css": "^4.1.1",
+    "crypto-js": "^4.1.1",
     "ionicons": "^6.0.3",
     "ngx-cookie-service": "^14.0.1",
     "rxjs": "~6.6.0",

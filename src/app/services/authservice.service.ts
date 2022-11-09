@@ -62,10 +62,15 @@ export class AuthserviceService {
   }
 
   generateCookie(user: User){
+
+    var CryptoJs= require("crypto-js");
+    //encrypt
+    var usernamecrypt= CryptoJs.AES.encrypt(user.username,'secret key 123').toString();
+    console.log('Voici le texte encrypté '+ usernamecrypt);
  
     this.cookie.set(
       'USERNAME',
-      user.username,
+      usernamecrypt,
 
     )
   }  

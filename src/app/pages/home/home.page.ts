@@ -143,7 +143,7 @@ async openCart(){
 
   modal.present();
 }
-
+ 
 animateCSS(animationName, keepAnimated = false) {
   const node = this.fab.nativeElement;
   node.classList.add('animated', animationName)
