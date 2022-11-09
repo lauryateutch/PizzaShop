@@ -7,6 +7,7 @@ import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { CartService,  } from '../../services/cart.service';
 import { Product } from 'src/app/models/product';
 import { map } from 'rxjs/operators';
+import { AuthserviceService } from 'src/app/services/authservice.service';
 //import { Component, ViewChild } from '@angular/core';
 
 
@@ -19,10 +20,16 @@ import { map } from 'rxjs/operators';
 export class HomePage {
 
 
+
  
   cart= [];
   data$:Observable <Product[]>;
+
+ // cart= [];
   products$:Observable <Product[]>;
+  products:Product[];
+  toplimit: number= 15;
+  logoutmessage: BehaviorSubject<String>;
   cartItemCount: BehaviorSubject<number>;
   @ViewChild('cart',{static: false, read: ElementRef})fab: ElementRef;
   @ViewChild('popover') popover;
@@ -31,7 +38,9 @@ export class HomePage {
 
 
 
-  constructor(private cartService: CartService,private modalCtrl: ModalController, public popoverController: PopoverController,private router: Router) { 
+  constructor(private cartService: CartService,private modalCtrl: ModalController, public popoverController: PopoverController,private router: Router,private authService: AuthserviceService) { 
+
+    
 
 
   }
@@ -40,9 +49,40 @@ ngOnInit(){
   
   this.cart= this.cartService.getCart();
   this.cartItemCount= this.cartService.getCartItemCount();
-  this.products$= this.cartService.getAllProducts();
-  this.data$= this.cartService.getAllProducts();
+
+  /* this.products$= this.cartService.getAllProducts();
+  this.data$= this.cartService.getAllProducts(); */
+   this.products$= this.cartService.getAllProducts();
+   this.products$.subscribe(value=>
+    {
+      this.products=value.slice(0,this.toplimit);
+      console.log(this.products)
+    }
+    )
+  
 }
+
+
+loadData(event) {
+  setTimeout(() => {
+    this.products$.subscribe(value=>
+      {
+        this.toplimit+=10;
+        this.products= value.slice(0,this.toplimit);
+        event.target.complete();
+        if (this.products.length === value.length) {
+          event.target.disabled = true;
+        }
+
+      }
+
+       )
+   
+  }, 250);
+
+}
+
+
 
 addToCart(product){
   this.cartService.addProduct(product);
@@ -140,6 +180,7 @@ this.products$= this.data$.pipe(
 
    
 }
+
 
 
 

@@ -13,6 +13,14 @@
         <ion-content>
           <ion-menu-toggle>
             <ion-item>
+             
+              <h1> Welcome {{user.username}}</h1>
+            </ion-item>
+          </ion-menu-toggle>
+
+          
+          <ion-menu-toggle>
+            <ion-item>
               <ion-avatar slot="start">
                 <img src="assets/image/pizzalogo.png" />
               </ion-avatar>
@@ -37,6 +45,23 @@
               <ion-label>see your commands here</ion-label>
             </ion-item>
           </ion-menu-toggle>
+
+          <ion-menu-toggle>
+            <ion-item routerLink="connection">
+              <ion-avatar slot="start">
+                <img src="assets/image/commands.jpeg" />
+              </ion-avatar>
+              <ion-label>sign in </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-button (click)="displaymessage()" expand="block" fill="clear" shape="round">
+            <ion-icon name="log-out"  color="primary"></ion-icon>        
+            </ion-button>
+
+
+          
+
         </ion-content>
       </ion-menu>
       
