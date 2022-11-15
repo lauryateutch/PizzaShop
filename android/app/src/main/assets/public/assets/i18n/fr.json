@@ -1,0 +1,11 @@
+{
+    "wordofwelcome": "Bienvenue sur notre application de great food",
+    "Name": "renseigner votre username",
+    "NameError": "I am sure you must have a name!",
+    "Email": "Email address",
+    "PhoneNo": "Phone No",
+    "Password": "renseigner votre mot de passe ",
+    "createaccount": "créer un nouveau compte",
+    "forgotpassword'": "vous avez oublié notre mot passe '",
+    "Submit": "se connecter"
+}
