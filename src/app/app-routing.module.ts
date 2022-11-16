@@ -3,21 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 
-const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'cart-m',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),canActivate:[AuthGuard]
-  },
-  
-   {
-    path: 'cart-modal',
-    loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
-  },
+const routes: Routes = [ 
+
   {
     path: 'home/:id',
     loadChildren: () => import('./pages/test/test.module').then( m => m.TestPageModule)
@@ -33,6 +20,20 @@ const routes: Routes = [
   {
     path: 'menu-cart',
     loadChildren: () => import('./pages/menu-cart/menu-cart.module').then( m => m.MenuCartPageModule)
+  },
+  {
+    path:'',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),canActivate:[AuthGuard]
+  },
+ 
+  {
+    path: 'cart-modal',
+    loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
   },
   
 ];

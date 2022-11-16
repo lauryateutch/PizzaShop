@@ -5,7 +5,7 @@ import { CartModalPage } from './cart-modal.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'cart',
     component: CartModalPage
   }
 ];
