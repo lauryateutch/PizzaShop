@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
   },
   {
+    path: 'add-pizza',
+    loadChildren: () => import('./pages/add-pizza/add-pizza.module').then( m => m.AddPizzaPageModule)
+  },
+  {
     path: 'home/:id',
     loadChildren: () => import('./pages/test/test.module').then( m => m.TestPageModule)
   },
@@ -34,6 +38,7 @@ const routes: Routes = [
     path: 'menu-cart',
     loadChildren: () => import('./pages/menu-cart/menu-cart.module').then( m => m.MenuCartPageModule)
   },
+  
   
 ];
 

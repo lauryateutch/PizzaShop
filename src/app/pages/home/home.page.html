@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Shopping</ion-title>
+  <ion-toolbar color="favorite">
+    <ion-title>Shopping cart</ion-title>
      <ion-buttons slot="start">
       <ion-menu-button  menu="menuhome"></ion-menu-button>
     </ion-buttons> 
@@ -13,9 +13,9 @@
 <ion-content [fullscreen]="true">
   <ion-fab vertical="top" horizontal="center" slot="fixed">
 
-    <ion-fab-button (click)="openCart()" #cart>
+    <ion-fab-button (click)="openCart()" #cart color="favorite">
       <div class="cart-length">{{cartItemCount | async}}</div>
-      <ion-icon name="cart" class="cart-icon"></ion-icon>
+      <ion-icon name="cart" class="cart-icon" ></ion-icon>
 
     </ion-fab-button>
 

@@ -1,21 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, enableProdMode, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from './models/User';
 import { AuthserviceService } from './services/authservice.service';
+import { AppModule } from './app.module';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { environment } from 'src/environments/environment';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import { platformBrowser } from '@angular/platform-browser';
+
+
+
+
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
+
+
 export class AppComponent implements OnInit {
   title= 'comprendre les directives ngstyle et ngclass'
   UserInfoConnection: BehaviorSubject<User>;
   logoutmessage: BehaviorSubject<String>;
   user: User;
   
-
-
   constructor(private authServive:AuthserviceService) {}
 
   ngOnInit() {
@@ -26,6 +37,8 @@ export class AppComponent implements OnInit {
       )
 
   }
+
+  
 
   displaymessage(){
   this.logoutmessage= new BehaviorSubject('ooops vous vous êtes déconnectés');
