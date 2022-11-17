@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Pizza</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button  menu="menuhome"></ion-menu-button>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <ion-text color="primary">
+    <h1>let 's add a new pizza</h1>
+  </ion-text>
+
+  <ion-card>
+    <ion-card-content>
+      <form action=" ">
+
+
+        <ion-label>Pizza Name</ion-label>
+        <ion-item>
+          <ion-input type="text" placeholder=""></ion-input>
+        </ion-item>
+
+        <ion-label>origin of the pizza </ion-label>
+        <ion-item>
+          <ion-input type="text" placeholder=""></ion-input>
+        </ion-item>
+
+        <ion-label>add a price </ion-label>
+        <ion-item>
+          <ion-input type="number" placeholder=""></ion-input>
+        </ion-item>
+
+        <ion-label>add a picture  </ion-label>
+        <ion-item>
+          <ion-button (click)="addPhotoToGallery()" expand="block" fill="clear" shape="round">
+            <ion-icon slot="start" name="camera"></ion-icon>          </ion-button>
+        </ion-item>
+
+        
+
+
+
+
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+  
+
+</ion-content>

@@ -3,7 +3,7 @@
   <ion-split-pane contentId="menu">
       <ion-menu contentId="menu" menuId="menuhome" side="start" type="push">
         <ion-header>
-          <ion-toolbar color="tertiary">
+          <ion-toolbar color="favorite">
             <ion-title>Menu</ion-title>
           </ion-toolbar>
         </ion-header>
@@ -52,6 +52,15 @@
                 <img src="assets/image/commands.jpeg" />
               </ion-avatar>
               <ion-label>sign in </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle>
+            <ion-item routerLink="add-pizza">
+              <ion-avatar slot="start">
+                <img src="assets/image/commands.jpeg" />
+              </ion-avatar>
+              <ion-label>New pizza </ion-label>
             </ion-item>
           </ion-menu-toggle>
 

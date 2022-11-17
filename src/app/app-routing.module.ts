@@ -6,6 +6,10 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [ 
 
   {
+    path: 'add-pizza',
+    loadChildren: () => import('./pages/add-pizza/add-pizza.module').then( m => m.AddPizzaPageModule)
+  },
+  {
     path: 'home/:id',
     loadChildren: () => import('./pages/test/test.module').then( m => m.TestPageModule)
   },
@@ -35,6 +39,7 @@ const routes: Routes = [
     path: 'cart-modal',
     loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
   },
+  
   
 ];
 
