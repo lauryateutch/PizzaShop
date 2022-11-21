@@ -8,6 +8,7 @@ import { CartService, } from '../../services/cart.service';
 import { Product } from 'src/app/models/product';
 import { map } from 'rxjs/operators';
 import { AuthserviceService } from 'src/app/services/authservice.service';
+import { PhotoService } from 'src/app/services/photo.service';
 //import { Component, ViewChild } from '@angular/core';
 
 
@@ -18,10 +19,6 @@ import { AuthserviceService } from 'src/app/services/authservice.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-
-
-
   cart = [];
   products$: Observable<Product[]>;
   products: Product[];
@@ -36,10 +33,9 @@ export class HomePage {
 
 
 
-  constructor(private cartService: CartService, private modalCtrl: ModalController, public popoverController: PopoverController, private router: Router, private authService: AuthserviceService) {
-
-
-
+  constructor(private cartService: CartService, private modalCtrl: ModalController, public popoverController: PopoverController, private router: Router,
+     private authService: AuthserviceService,
+     private photoservice: PhotoService) {
 
   }
 
@@ -56,6 +52,10 @@ export class HomePage {
     }
     )
 
+  }
+
+  addPhotoToGallery(){
+    this.photoservice.addNewToGallery();
   }
 
 
