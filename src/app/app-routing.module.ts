@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'cart-modal',
     loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
   },
+  {
+    path: 'gallery-photo',
+    loadChildren: () => import('./pages/gallery-photo/gallery-photo.module').then( m => m.GalleryPhotoPageModule)
+  },
   
   
 ];

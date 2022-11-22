@@ -11,8 +11,25 @@ import { UserPhoto } from '../models/user-photo';
 export class PhotoService {
 
   public photos: UserPhoto[]=[];
+  private PHOTO_STORAGE:string= 'photo';
+  
 
   constructor() { }
+
+
+  public async loadSaved(){
+    const photoList= await Preferences.get({key:this.PHOTO_STORAGE });
+    this.photos=JSON.parse(photoList.value) || [] ;
+    for (let photo of this.photos){
+      const readFile= await Filesystem.readFile({
+        path: photo.filepath,
+        directory: Directory.Data,
+      });
+
+      photo.webviewPath= `data:image/jpeg;base64,${readFile.data}`;
+    }
+  }
+
 
   public async addNewToGallery(){
 
@@ -25,16 +42,18 @@ export class PhotoService {
 
 
     const savedImageFile= await this.savePicture(capturedPhoto);
-    /* this.photos.unshift({
-      filepath:"soon...",
-      webviewPath:capturedPhoto.webPath
-    }); */
     this.photos.unshift(savedImageFile);
     console.log(savedImageFile);
+    Preferences.set({
+      key: this.PHOTO_STORAGE,
+      value:JSON.stringify(this.photos) 
+    });
 
 
   }
 
+
+  
 
   private async savePicture(photo: Photo){
       // Convert photo to base64 format, required by Filesystem API to save

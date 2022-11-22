@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="favorite">
+    <ion-button slot="start" (click)="previouspage()" expand="block" fill="clear" shape="round">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+   </ion-button>
+    <ion-title>gallery photo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-grid >
+  <ion-row>
+    <ion-col size="4" *ngFor="let photo of photos; index as position">
+      <ion-img [src]="photo.webviewPath"  [ngStyle]="{'width': '110px', 'height': '110px'}"></ion-img>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

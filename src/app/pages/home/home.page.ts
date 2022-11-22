@@ -45,7 +45,7 @@ export class HomePage {
 
     this.cart = this.cartService.getCart();
     this.cartItemCount = this.cartService.getCartItemCount();
-    this.photos= this.photoservice.photos;
+    //this.photos= this.photoservice.photos;
 
     this.products$ = this.cartService.getAllProducts();
     this.products$.subscribe(value => {
@@ -59,6 +59,7 @@ export class HomePage {
 
   addPhotoToGallery(){
     this.photoservice.addNewToGallery();
+    this.router.navigateByUrl('gallery-photo');
   }
 
 
