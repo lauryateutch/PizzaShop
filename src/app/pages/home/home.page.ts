@@ -9,6 +9,7 @@ import { Product } from 'src/app/models/product';
 import { map } from 'rxjs/operators';
 import { AuthserviceService } from 'src/app/services/authservice.service';
 import { PhotoService } from 'src/app/services/photo.service';
+import { UserPhoto } from 'src/app/models/user-photo';
 //import { Component, ViewChild } from '@angular/core';
 
 
@@ -20,6 +21,7 @@ import { PhotoService } from 'src/app/services/photo.service';
 })
 export class HomePage {
   cart = [];
+  photos: UserPhoto[];
   products$: Observable<Product[]>;
   products: Product[];
   productfiltered: Product[];
@@ -43,6 +45,7 @@ export class HomePage {
 
     this.cart = this.cartService.getCart();
     this.cartItemCount = this.cartService.getCartItemCount();
+    this.photos= this.photoservice.photos;
 
     this.products$ = this.cartService.getAllProducts();
     this.products$.subscribe(value => {
