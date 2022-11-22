@@ -3,6 +3,7 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Preferences } from '@capacitor/preferences';
 import { UserPhoto } from '../models/user-photo';
+import { Platform } from '@ionic/angular';
 
 
 @Injectable({
@@ -12,9 +13,12 @@ export class PhotoService {
 
   public photos: UserPhoto[]=[];
   private PHOTO_STORAGE:string= 'photo';
+  private platform: Platform;
   
 
-  constructor() { }
+  constructor(platform: Platform) { 
+    this.platform= platform
+  }
 
 
   public async loadSaved(){
@@ -76,10 +80,25 @@ return{
 
 
 private async readAsBase64(photo: Photo){
+    // "hybrid" will detect Cordova or Capacitor
+if (this.platform.is('hybrid')){
+      // Read the file into base64 format
+const file= await Filesystem.readFile({
+  path: photo.path
+});
+return file.data;
+}
+else{
+
+  // Fetch the photo, read as a blob, then convert to base64 format
+
   const response= await fetch(photo.webPath);
   const blob= await response.blob();
 
   return await this.convertBlobToBase64(blob) as string;
+
+}
+    
 }
 
 

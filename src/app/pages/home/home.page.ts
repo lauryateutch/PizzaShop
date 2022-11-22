@@ -57,6 +57,8 @@ export class HomePage {
 
   }
 
+
+
   addPhotoToGallery(){
     this.photoservice.addNewToGallery();
     this.router.navigateByUrl('gallery-photo');

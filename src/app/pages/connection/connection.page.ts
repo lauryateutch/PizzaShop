@@ -3,10 +3,10 @@ import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-//import { User } from 'src/app/services/authservice.service';
 import { AuthserviceService } from 'src/app/services/authservice.service';
 import {filter, map, tap} from  'rxjs/operators';
 import { User } from 'src/app/models/User';
+import { MenuController } from '@ionic/angular';
 
 
 @Component({
@@ -24,7 +24,8 @@ export class ConnectionPage implements OnInit {
   isConnected: boolean;
   error:string;
 
-  constructor(private formbuilder: FormBuilder, private authService: AuthserviceService, private router: Router,) { }
+  constructor(private formbuilder: FormBuilder, private authService: AuthserviceService, private router: Router,
+    private menuCtrl: MenuController) { }
 
   ngOnInit():void {
 
@@ -40,6 +41,14 @@ export class ConnectionPage implements OnInit {
     );
   
 
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+  }
+  ionViewDidLeave()
+  {
+    this.menuCtrl.enable(true);
   }
 
   onSubmitForm(){
