@@ -40,8 +40,8 @@ export class AuthserviceService {
   findUser(formValue:{username: string, password:string}):Observable<User>{
     return this.getListUser().pipe(
       map(ListUsers => [...ListUsers].find
-        (element=> {
-          this.UserInfoConnection.next(formValue);
+        (element => {
+          this.UserInfoConnection.next(element);
           return element.username=== formValue.username && element.password=== formValue.password
         }), 
         

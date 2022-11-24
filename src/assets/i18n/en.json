@@ -1,0 +1,75 @@
+{
+    
+    "Menu":{
+        "title":"Menu",
+        "msgWelcome":"Welcome  {{name}}",
+        "pizza":"See our pizzas",
+        "menucart":"Visit the menu-cart",
+        "command":" your Orders ",
+        "connection":"Sign in",
+        "gallery":"Go to your Gallery of pizzas",
+        "logout":"LOGOUT"
+    },
+
+    "CONNECTION":{
+
+        "title":"Welcome on GreatFood",
+        "placeholderusername":"username",
+        "placeholderpassword":"password",
+        "placeholderlanguage":"choose a language",
+        "languageone":"French",
+        "languagetwo":"English",
+        "btnSubmit":"Sign In",
+        "btnCreate":"Create my account",
+        "btnForgotPwd":"Forgot my password"
+
+
+    },
+
+    "HOME":{
+        "title":" Our Pizzas",
+        "placeholderSearchPizza":"search your pizza",
+        "popoverdetails":"show details",
+        "popoverliker":"like",
+        "scrollloadingtext":"Loading more data..."
+    },
+
+    "MENUCART" :{
+        "title":"discover our Menu Cart",
+        "fistday":"Mon",
+        "Scdday":"Tues",
+        "thrday":"Wed",
+        "frthday":"Thus",
+        "fifthday":"Fri",
+        "sixthday":"Sat"
+        
+
+    },
+
+    "MODALCART":{
+        "title":"basket",
+        "total":"Total",
+        "btncheckout":"Checkout"
+    },
+
+    "PHOTOGALLERY":{
+        "title":"Photo Gallery"
+    },
+
+    "COMMANDS":{
+        "title":"Orders",
+        "btnconfirm":"Confirm"
+
+    },
+    "TEST":{
+        "title":"details",
+        "contentText":"In the array of buttons,each buttonincludes properties for its text and optionally a handler. If a handler returns false thenalert will not automatically be dismissed when the button is clicked.
+                      All buttons will show up in the order they have been added to the buttons array from left to right. Note: The right most button (the last one in the array) is the main button.
+                      Optionally,a role property can be added to a button, such as cancel. If a cancel role is on one of the buttons, then if the alert is dismissed by tapping the backdrop, then it
+                       will fire the handler from the button with a cancel role."
+        
+    }
+
+
+
+}    
