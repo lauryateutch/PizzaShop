@@ -9,6 +9,7 @@ import { User } from 'src/app/models/User';
 import { MenuController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-connection',
   templateUrl: './connection.page.html',
@@ -23,6 +24,7 @@ export class ConnectionPage implements OnInit {
   User$:Observable<User>;
   isConnected: boolean;
   error:string;
+  ShowPassword= false;
 
   constructor(private formbuilder: FormBuilder, private authService: AuthserviceService, private router: Router,
     private menuCtrl: MenuController) { }
@@ -63,18 +65,16 @@ export class ConnectionPage implements OnInit {
     }else{
       this.error='veuillez vérifier votre username ou password!!!';
     }
-      
-
-    
-    
-  
+     
     
   })
 
-    
-
-
  }
+
+ onPasswordToggle():void{
+  this.ShowPassword= !this.ShowPassword;
+  console.log('salut');
+}
 
 get userName() {
     return this.snapForm.get('username');

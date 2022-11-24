@@ -7,6 +7,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { environment } from 'src/environments/environment';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { platformBrowser } from '@angular/platform-browser';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 
 
@@ -27,7 +29,7 @@ export class AppComponent implements OnInit {
   logoutmessage: BehaviorSubject<String>;
   user: User;
   
-  constructor(private authServive:AuthserviceService) {}
+  constructor(private authServive:AuthserviceService, private cookie: CookieService,private router: Router) {}
 
   ngOnInit() {
    this.UserInfoConnection= this.authServive.getUserInfoConnection();
@@ -35,6 +37,18 @@ export class AppComponent implements OnInit {
       this.user= value
       
       )
+
+  }
+
+  deleteCookie(){
+    this.cookie.delete('USERNAME');
+    this.cookie.delete('PASSWORD');
+
+  }
+
+  async signOut(){
+    this.deleteCookie();
+    this.router.navigateByUrl('/connection')
 
   }
 

@@ -57,6 +57,8 @@ export class HomePage {
 
   }
 
+  
+
 
 
   addPhotoToGallery(){

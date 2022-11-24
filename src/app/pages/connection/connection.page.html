@@ -37,10 +37,10 @@
          </div> 
             
             <ion-item>
-              <ion-input type="text" placeholder="Password" formControlName="password"></ion-input>
-              <ion-label slot="end">
-                <ion-icon name="eye"></ion-icon>
-              </ion-label>
+              <ion-input [type]="ShowPassword ? 'text' : 'password' " placeholder="Password" formControlName="password"></ion-input>
+              <div slot="end" ion-button fill="clear" size="small"  (click)="onPasswordToggle()">
+                <ion-icon [name]="ShowPassword ? 'eye' : 'eye-off' "></ion-icon>
+              </div>
             </ion-item>
             <div *ngIf="password.errors !== null && password.errors.minlength">
               <p style="color: red;">password must minimun be 3 characters </p>   

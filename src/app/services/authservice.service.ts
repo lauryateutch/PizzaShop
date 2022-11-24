@@ -62,22 +62,28 @@ export class AuthserviceService {
   }
 
   generateCookie(user: User){
+    let timeout;
+    timeout=5;
+    this.cookie.set('USERNAME',this.encryptData(user.username),{expires: timeout});
+    this.cookie.set('PASSWORD',this.encryptData(user.password),{expires: timeout});
 
-    var CryptoJs= require("crypto-js");
-    //encrypt
-    var usernamecrypt= CryptoJs.AES.encrypt(user.username,'secret key 123').toString();
-    console.log('Voici le texte encrypté '+ usernamecrypt);
- 
-    this.cookie.set(
-      'USERNAME',
-      usernamecrypt,
 
-    )
-  }  
+  } 
+  
+  encryptData(text: string){
+    const cryptoJS = require('crypto-js');
+    return cryptoJS.AES.encrypt(text, 'Isnov2022').toString();
+  }
+
+  decryptData(encryptText){
+    const cryptoJS = require('crypto-js');
+    const bytes  = cryptoJS.AES.decrypt(encryptText, 'Isnov2022');
+    return bytes.toString(cryptoJS.enc.Utf8);
+  }
 
 
 generateToken():string{
-  if (this.cookie.get('USERNAME'))
+  if (this.cookie.get('USERNAME')&& this.cookie.get('PASSWORD'))
       return this.token='MyToken';
   //this.router.navigateByUrl('/connection')
 }

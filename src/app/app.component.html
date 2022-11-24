@@ -48,9 +48,7 @@
 
           <ion-menu-toggle>
             <ion-item routerLink="connection">
-              <ion-avatar slot="start">
-                <img src="assets/image/commands.jpeg" />
-              </ion-avatar>
+              <ion-icon slot="start" name="log-in"></ion-icon>
               <ion-label>sign in </ion-label>
             </ion-item>
           </ion-menu-toggle>
@@ -66,22 +64,23 @@
 
           <ion-menu-toggle>
             <ion-item routerLink="add-pizza">
-              <ion-avatar slot="start">
-                <img src="assets/image/commands.jpeg" />
-              </ion-avatar>
+              <ion-icon slot="start" name="add-circle"></ion-icon>
               <ion-label>New pizza </ion-label>
             </ion-item>
-          </ion-menu-toggle>
-
-          <ion-button (click)="displaymessage()" expand="block" fill="clear" shape="round">
-            <ion-icon name="log-out"  color="primary"></ion-icon>        
-            </ion-button>
-
-
-          
+          </ion-menu-toggle>  
 
         </ion-content>
+
+        <ion-footer  color="favorite">
+          <ion-label  (click)="signOut()">
+            <ion-text>Sign out</ion-text>
+            <ion-icon slot="end" name="log-out-outline"></ion-icon>
+          </ion-label>
+        </ion-footer>
+
       </ion-menu>
+
+     
       
       <ion-router-outlet id="menu"> </ion-router-outlet>
 
