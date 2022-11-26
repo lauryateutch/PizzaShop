@@ -51,9 +51,9 @@
 
           <ion-item lines="none">
             <ion-select interface="popover" placeholder="choose a language">
-              <ion-select-option value="français">Français</ion-select-option>
-              <ion-select-option value="anglais">Anglais</ion-select-option>
-            </ion-select>
+              <ion-select-option [value]="lang" *ngFor="let lang of languages"  (click)="selectlng(lang)">Français</ion-select-option>
+<!--               <ion-select-option value="anglais">Anglais</ion-select-option>
+ -->            </ion-select>
 
           </ion-item>
 

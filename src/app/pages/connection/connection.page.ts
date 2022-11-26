@@ -7,6 +7,7 @@ import { AuthserviceService } from 'src/app/services/authservice.service';
 import {filter, map, tap} from  'rxjs/operators';
 import { User } from 'src/app/models/User';
 import { MenuController } from '@ionic/angular';
+import { TranslateServices } from 'src/app/services/translate.service';
 
 
 
@@ -25,9 +26,10 @@ export class ConnectionPage implements OnInit {
   isConnected: boolean;
   error:string;
   ShowPassword= false;
+  languages:any;
 
   constructor(private formbuilder: FormBuilder, private authService: AuthserviceService, private router: Router,
-    private menuCtrl: MenuController) { }
+    private menuCtrl: MenuController, private translateservice: TranslateServices) { }
 
   ngOnInit():void {
 
@@ -41,6 +43,8 @@ export class ConnectionPage implements OnInit {
     }
     
     );
+
+this.languages=this.translateservice.getLanguages();
   
 
   }
@@ -74,6 +78,12 @@ export class ConnectionPage implements OnInit {
  onPasswordToggle():void{
   this.ShowPassword= !this.ShowPassword;
   console.log('salut');
+}
+
+
+selectlng(lng:string){
+this.translateservice.setLanguage(lng);
+
 }
 
 get userName() {
