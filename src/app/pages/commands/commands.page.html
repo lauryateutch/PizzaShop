@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="favorite">
     <ion-button slot="start" (click)="previouspage()" expand="block" fill="clear" shape="round">
       <ion-icon name="arrow-back-outline"></ion-icon>
    </ion-button>
@@ -48,33 +48,6 @@
     </ion-card-content>
 
   </ion-card> 
-
-
-<!-- basic usage of grid with the concept of the property fixed -->
-<ion-grid [fixed]="true">
-  <ion-row >
-    <ion-col size="6">1</ion-col>
-    <ion-col size="6">2</ion-col>
-  </ion-row>
-</ion-grid>
-<!-- le concept ion-grid avec auto-->
-<ion-grid >
-  <ion-row>
-    <ion-col size="auto">ionic dev mobile </ion-col>
-    <ion-col size="7">salut</ion-col>
-  </ion-row>
-</ion-grid>
-
-<!-- le concept ion-grid avec une longueur automatique-->
-<ion-grid fixed>
-  <ion-row>
-    <ion-col size="3">Lundi</ion-col>
-    <ion-col size="4"> Mardi</ion-col>
-    <ion-col size="4"> Mercredi</ion-col>
-    <ion-col>J </ion-col>
-  </ion-row>
-</ion-grid>
-
 
   
 </ion-content>

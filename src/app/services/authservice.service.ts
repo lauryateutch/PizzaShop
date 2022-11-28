@@ -24,13 +24,25 @@ import { User } from '../models/User';
 export class AuthserviceService {
 
 
-  constructor(private http: HttpClient, private cookie : CookieService, private router: Router) { }
 
-   private user1= new User();
+  private user1= new User();
+  userConnect: User;  //this user will help us to have all the info connection of the user
   private token!: string;
   private UserInfoConnection= new BehaviorSubject(this.user1);
   private logoutmessage= new BehaviorSubject('ooops vous vous êtes déconnectés');
- 
+  permissionChange: BehaviorSubject<string> ;
+  permission: string;
+
+
+
+  constructor(private http: HttpClient, private cookie : CookieService, private router: Router) {
+
+    this.permissionChange=new BehaviorSubject<string>(this.permission);
+
+   }
+
+
+
 
   getListUser():Observable<User[]>{
    
@@ -40,8 +52,10 @@ export class AuthserviceService {
   findUser(formValue:{username: string, password:string}):Observable<User>{
     return this.getListUser().pipe(
       map(ListUsers => [...ListUsers].find
-        (element=> {
-          this.UserInfoConnection.next(formValue);
+        (element => {
+          this.UserInfoConnection.next(element);
+          this.userConnect=element;
+         
           return element.username=== formValue.username && element.password=== formValue.password
         }), 
         
@@ -55,6 +69,7 @@ export class AuthserviceService {
 
   getUserInfoConnection(){
   return this.UserInfoConnection;
+  
   }
 
   getLogoutMessage(){

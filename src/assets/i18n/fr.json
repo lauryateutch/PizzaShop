@@ -1,0 +1,79 @@
+{
+    
+    "Menu":{
+        "title":"Menu",
+        "msgWelcome":"Bienvenue  {{name}}",
+        "pizza":"Nos pizzas",
+        "menucart":"Visiter notre menu",
+        "command":"Vos commandes",
+        "connection":"Se connecter",
+        "gallery":"gallery photo",
+        "logout":"se déconnecter"
+    },
+
+    "CONNECTION":{
+
+        "title":"Bienvenue sur GreatFood",
+        "placeholderusername":"nom utilisateur",
+        "placeholderpassword":"mot de passe",
+        "placeholderlanguage":"choisir une langue",
+        "languageone":"Français",
+        "languagetwo":"Anglais",
+        "btnSubmit":"Se connecter",
+        "btnCreate":"Creer mon compte",
+        "btnForgotPwd":"mot de passe oublié"
+
+
+    },
+
+    "HOME":{
+        "title":"Nos Pizzas",
+        "placeholderSearchPizza":"rechercher pizzaq",
+        "popoverdetails":"détail",
+        "popoverliker":"liker",
+        "scrollloadingtext":"chargement de données..."
+    },
+
+    "MENUCART" :{
+        "title":"decouvrez notre carte de menu",
+        "fistday":"Lun",
+        "Scdday":"Mar",
+        "thrday":"Mer",
+        "frthday":"Jeu",
+        "fifthday":"Ven",
+        "sixthday":"Sam"
+        
+
+    },
+
+    "MODALCART":{
+        "title":"Panier",
+        "total":"Total",
+        "btncheckout":"Valider"
+    },
+
+    "PHOTOGALLERY":{
+        "title":"Gallery photo"
+    },
+
+    "COMMANDS":{
+        "title":"Commandes",
+        "btnconfirm":"Confirmer"
+
+    },
+
+    "TEST":{
+        "title":"détails",
+        "contentText":"Dans le tableau de boutons, chaque bouton
+        inclut des propriétés pour son texte,
+         et éventuellement un gestionnaire. Si un gestionnaire renvoie false alors
+          l'alerte ne sera pas automatiquement rejetée lorsque le bouton est cliqué.
+           Tous les boutons apparaîtront dans l'ordre dans lequel ils ont été ajoutés au tableau de boutons, de gauche à droite. Remarque : Le bouton le plus à droite (le dernier du tableau) est le bouton principal.
+
+              Facultativement, une propriété de rôle peut être ajoutée à un bouton, comme annuler. Si un rôle d'annulation se trouve sur l'un des boutons, alors si l'alerte est rejetée en appuyant sur le fond, elle déclenchera le gestionnaire à partir du bouton avec un rôle d'annulation."
+        
+    }
+
+
+
+}    

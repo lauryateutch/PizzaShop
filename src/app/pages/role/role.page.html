@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="favorite">
+    <ion-title >role</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+ 
+  <div *ngIf="lengthRole!=1">
+  
+    <ion-list style="background-color: white;">
+      <ion-radio-group [(ngModel)]="select">
+        <ion-list-header>
+          <ion-text color="primary">
+            <h1>Select your role</h1>
+          </ion-text>
+        </ion-list-header>
+    
+        <ion-item *ngFor="let role of roles">
+          <ion-label>
+            <ion-text>{{role.roleName}}</ion-text>
+          </ion-label>
+         <ion-radio  slot="start"></ion-radio>
+          
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+
+    <div class="buttonV" style="justify-content: flex-end;">
+      <ion-button id="btSelect" (click)="selectRole()"  [ngClass]="select!==''?'success' : 'no'">
+        <ion-icon   name="checkmark" ></ion-icon>
+        <ion-text >
+         apply
+        </ion-text>
+      </ion-button>
+    </div>
+  </div>
+
+
+</ion-content>

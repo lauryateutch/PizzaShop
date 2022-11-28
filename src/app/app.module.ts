@@ -8,8 +8,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopoverComponent } from './component/popover/popover.component';
 import { ListCommandComponent } from './component/list-command/list-command.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service' ;
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule,TranslateLoader } from '@ngx-translate/core';
+import { Storage } from '@ionic/storage';
+
+
+
+export function createTranslateloader(http: HttpClient){
+  return new TranslateHttpLoader(http,'assets/i18n/','.json');
+}
 
 @NgModule({
   declarations: [AppComponent,PopoverComponent,ListCommandComponent],
@@ -19,7 +28,15 @@ import {CookieService} from 'ngx-cookie-service' ;
      AppRoutingModule,
      ReactiveFormsModule,
      FormsModule,
-     HttpClientModule
+     HttpClientModule,
+     TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory:(createTranslateloader),
+        deps: [HttpClient] 
+      }
+      
+    })
 
 ],
   providers: [
@@ -27,7 +44,8 @@ import {CookieService} from 'ngx-cookie-service' ;
     {
      provide: RouteReuseStrategy, 
      useClass: IonicRouteStrategy 
-    }
+    },
+    Storage
   ],
     
   bootstrap: [AppComponent],

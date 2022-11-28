@@ -1,0 +1,69 @@
+{
+    "Menu":{
+        "title":"Menu",
+        "msgWelcome":"Welcome  {{name}}",
+        "pizza":"See our pizzas",
+        "menucart":"Visit the menu-cart",
+        "command":" your Orders ",
+        "connection":"Sign in",
+        "gallery":"Go to your Gallery of pizzas",
+        "logout":"LOGOUT"
+    },
+
+    "CONNECTION":{
+
+        "title":"Welcome on GreatFood",
+        "placeholderusername":"username",
+        "placeholderpassword":"password",
+        "placeholderlanguage":"choose a language",
+        "languageone":"French",
+        "languagetwo":"English",
+        "btnSubmit":"Sign In",
+        "btnCreate":"Create my account",
+        "btnForgotPwd":"Forgot my password"
+
+
+    },
+
+    "HOME":{
+        "title":" Our Pizzas",
+        "placeholderSearchPizza":"search your pizza",
+        "popoverdetails":"show details",
+        "popoverliker":"like",
+        "scrollloadingtext":"Loading more data..."
+    },
+
+    "MENUCART" :{
+        "title":"discover our Menu Cart",
+        "fistday":"Mon",
+        "Scdday":"Tues",
+        "thrday":"Wed",
+        "frthday":"Thus",
+        "fifthday":"Fri",
+        "sixthday":"Sat"
+        
+
+    },
+
+    "MODALCART":{
+        "title":"basket",
+        "total":"Total",
+        "btncheckout":"Checkout"
+    },
+
+    "PHOTOGALLERY":{
+        "title":"Photo Gallery"
+    },
+
+    "COMMANDS":{
+        "title":"Orders",
+        "btnconfirm":"Confirm"
+
+    }
+   
+        
+    }
+
+
+
+   

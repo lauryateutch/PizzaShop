@@ -9,8 +9,8 @@ import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { platformBrowser } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { TranslateServices } from './services/translate.service';
-
+import { LanguageService } from './services/language.service';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -31,14 +31,15 @@ export class AppComponent implements OnInit {
   user: User;
   
   constructor(private authServive:AuthserviceService, private cookie: CookieService,private router: Router,
-    private translateservice:TranslateServices, private storage: Storage) {}
+    private languageservice:LanguageService, private storage:Storage) {}
 
 
 
   initializeApp(){
     this.storage.create();
-    this.translateservice.setInitialAppLanguage();
-  }
+    this.languageservice.setInitialAppLanguage();
+   
+  } 
   ngOnInit() {
 
    this.UserInfoConnection= this.authServive.getUserInfoConnection();

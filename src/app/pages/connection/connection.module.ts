@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ConnectionPageRoutingModule } from './connection-routing.module';
 
 import { ConnectionPage } from './connection.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ConnectionPage } from './connection.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    ConnectionPageRoutingModule
+    ConnectionPageRoutingModule,
+    TranslateModule,
   ],
   declarations: [ConnectionPage]
 })

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -7,8 +7,8 @@ import { AuthserviceService } from 'src/app/services/authservice.service';
 import {filter, map, tap} from  'rxjs/operators';
 import { User } from 'src/app/models/User';
 import { MenuController } from '@ionic/angular';
-import { TranslateServices } from 'src/app/services/translate.service';
-
+import { LanguageService } from 'src/app/services/language.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -27,9 +27,19 @@ export class ConnectionPage implements OnInit {
   error:string;
   ShowPassword= false;
   languages:any;
+  placeholderUsername
 
   constructor(private formbuilder: FormBuilder, private authService: AuthserviceService, private router: Router,
-    private menuCtrl: MenuController, private translateservice: TranslateServices) { }
+    private menuCtrl: MenuController, private languageservice: LanguageService, private translate: TranslateService) {
+
+      this.translate.stream('CONNECTION.title').subscribe(data=>{
+        this.placeholderUsername=data;
+        console.log(data);
+      });
+    
+      
+
+     }
 
   ngOnInit():void {
 
@@ -44,8 +54,8 @@ export class ConnectionPage implements OnInit {
     
     );
 
-this.languages=this.translateservice.getLanguages();
-  
+//this.languages=this.translateservice.getLanguages();
+  this.languages= this.languageservice.getLanguages();
 
   }
 
@@ -65,7 +75,7 @@ this.languages=this.translateservice.getLanguages();
     if(this.User){
       this.authService.generateToken();
       this.authService.generateCookie(this.User);
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/role');
     }else{
       this.error='veuillez vérifier votre username ou password!!!';
     }
@@ -82,9 +92,11 @@ this.languages=this.translateservice.getLanguages();
 
 
 selectlng(lng:string){
-this.translateservice.setLanguage(lng);
+this.languageservice.setLanguage(lng);
 
 }
+
+
 
 get userName() {
     return this.snapForm.get('username');

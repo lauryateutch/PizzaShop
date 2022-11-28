@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="favorite">
+    <ion-title>organisation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="user" >
+    <form > 
+      <div>
+        <ion-list style="background-color: white;" >
+          <ion-list-header>
+            <ion-label>
+              <ion-text id="msgWareHouse">
+               Select your organisation an warehouse
+              </ion-text>
+            </ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label position="floating">choose an organisation</ion-label>
+            <ion-select id="orgSelect" (ionChange)="getWarehouse($event.target.value)"  interface="popover">
+              <ion-select-option  *ngFor="let org of organisations" >
+                {{org.orgName}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label> choose a wareHouse </ion-label>
+            <ion-select   interface="popover" (ionChange)="setWareHouse($event.target.value)" >
+              <ion-select-option *ngFor="let warehouse of warehouses">
+                {{warehouse.whName}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </div>
+
+        <ion-button *ngIf="roles.length>1" style="margin-left:13px ;" color="medium" (click)="back()" >
+          <ion-icon name="chevron-back-outline"></ion-icon>
+          <ion-text>Back</ion-text>
+        </ion-button>
+
+        <ion-button id="apply"  (click)="initshoppizza()" type="submit">
+          <ion-icon   name="checkmark" ></ion-icon>
+          <ion-text>apply</ion-text>
+        </ion-button>
+      
+    </form>
+  </div>
+
+</ion-content>

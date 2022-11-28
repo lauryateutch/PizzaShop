@@ -43,6 +43,14 @@ const routes: Routes = [
     path: 'gallery-photo',
     loadChildren: () => import('./pages/gallery-photo/gallery-photo.module').then( m => m.GalleryPhotoPageModule)
   },
+  {
+    path: 'role',
+    loadChildren: () => import('./pages/role/role.module').then( m => m.RolePageModule)
+  },
+  {
+    path: 'organisation',
+    loadChildren: () => import('./pages/organisation/organisation.module').then( m => m.OrganisationPageModule)
+  },
   
   
 ];

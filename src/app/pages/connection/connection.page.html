@@ -14,59 +14,60 @@
       <ion-card-header>
 
         <ion-card-title>
-          <ion-text color="primary">
-            <h1>welcome on GreatFood</h1>
+          <ion-text color="primary" [translate]="'HOME.title'">
+            <h1>welcome on GreatFood </h1>
 
           </ion-text>
         </ion-card-title>
       </ion-card-header>
 
 
-       <form [formGroup]="snapForm" (ngSubmit)="onSubmitForm()">
+      <form [formGroup]="snapForm" (ngSubmit)="onSubmitForm()">
 
 
         <ion-card-content>
 
           <ion-list>
             <ion-item>
-              <ion-input type="text" placeholder="username" formControlName="username"></ion-input>
-             
+              <ion-input type="text" placeholder="Username" formControlName="username"></ion-input>
+
             </ion-item>
             <div *ngIf="userName.errors !== null && userName.errors.minlength ">
-              <p style="color: red;">username must minimun be 4 characters </p>  
-         </div> 
-            
+              <p style="color: red;">username must minimun be 4 characters </p>
+            </div>
+
             <ion-item>
-              <ion-input [type]="ShowPassword ? 'text' : 'password' " placeholder="Password" formControlName="password"></ion-input>
-              <div slot="end" ion-button fill="clear" size="small"  (click)="onPasswordToggle()">
+              <ion-input [type]="ShowPassword ? 'text' : 'password' " placeholder="password" formControlName="password">
+              </ion-input>
+              <div slot="end" ion-button fill="clear" size="small" (click)="onPasswordToggle()">
                 <ion-icon [name]="ShowPassword ? 'eye' : 'eye-off' "></ion-icon>
               </div>
             </ion-item>
             <div *ngIf="password.errors !== null && password.errors.minlength">
-              <p style="color: red;">password must minimun be 3 characters </p>   
-           </div>
-            
-            
+              <p style="color: red;">password must minimun be 3 characters </p>
+            </div>
+
+
           </ion-list>
 
           <ion-item lines="none">
             <ion-select interface="popover" placeholder="choose a language">
-              <ion-select-option [value]="lang" *ngFor="let lang of languages"  (click)="selectlng(lang)">Français</ion-select-option>
-<!--               <ion-select-option value="anglais">Anglais</ion-select-option>
- -->            </ion-select>
+              <ion-select-option [value]="lang.value" *ngFor="let lang of languages" (click)="selectlng(lng.value)">
+                {{lang.text}}</ion-select-option>
+            </ion-select>
 
           </ion-item>
 
 
         </ion-card-content>
-         <p style="color: red;">  {{error}}</p>
+        <p style="color: red;"> {{error}}</p>
 
 
 
 
 
 
-        <ion-button class="button" type="submit" (click)="onSubmitForm()" [disabled]="snapForm.invalid"  shape="round">
+        <ion-button class="button" type="submit" (click)="onSubmitForm()" [disabled]="snapForm.invalid" shape="round">
           Sign In
         </ion-button>
 
@@ -77,7 +78,7 @@
         <ion-button class="" expand="block" fill="clear" shape="round">
           Créer mon compte
         </ion-button>
-        <ion-button  expand="block" fill="clear" shape="round">
+        <ion-button expand="block" fill="clear" shape="round">
           Mot de passe oublié
         </ion-button>
       </div>
