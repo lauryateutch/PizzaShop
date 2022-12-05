@@ -19,7 +19,7 @@
           </ion-list-header>
           <ion-item>
             <ion-label position="floating">choose an organisation</ion-label>
-            <ion-select id="orgSelect" (ionChange)="getWarehouse($event.target.value)"  interface="popover">
+            <ion-select id="orgSelect" interface="popover">
               <ion-select-option  *ngFor="let org of organisations" >
                 {{org.orgName}}
               </ion-select-option>
@@ -27,7 +27,7 @@
           </ion-item>
           <ion-item>
             <ion-label> choose a wareHouse </ion-label>
-            <ion-select   interface="popover" (ionChange)="setWareHouse($event.target.value)" >
+            <ion-select   interface="popover"  >
               <ion-select-option *ngFor="let warehouse of warehouses">
                 {{warehouse.whName}}
               </ion-select-option>

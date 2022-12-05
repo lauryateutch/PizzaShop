@@ -24,6 +24,13 @@ export class RolePage implements OnInit {
 
   constructor(private auth: AuthserviceService, private router:Router) { }
 
+  ionViewWillEnter(){
+    if (this.roles.length===1){
+      this.router.navigateByUrl('/organisation');
+    }
+  }
+
+
   ngOnInit() {
 this.user= this.auth.userConnect;
 this.roles=this.user.Role;
@@ -33,11 +40,7 @@ this.lengthRole= this.roles.length;
   
   }
 
-  ionViewWillEnter(){
-    if (this.roles.length===1){
-      this.router.navigateByUrl('/organisation');
-    }
-  }
+ 
 
   selectRole(){
      

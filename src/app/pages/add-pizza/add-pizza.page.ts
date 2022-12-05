@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
+import { IonicSlides, IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-pizza',
@@ -7,14 +8,26 @@ import { PhotoService } from 'src/app/services/photo.service';
   styleUrls: ['./add-pizza.page.scss'],
 })
 export class AddPizzaPage implements OnInit {
+@ViewChild('mySlider') slides: IonSlides;
+  slidesOptions = {
+    initialSlide: 0,
+    direction: 'horizontal',
+    speed: 300,
+    spaceBetween: 8,
+    slidesPerView: 1.5,
+    freeMode: true,
+    loop: true
+  };
 
   constructor(private photoservice: PhotoService) { }
 
   ngOnInit() {
   }
 
-  addPhotoToGallery(){
+ /*  addPhotoToGallery(){
     this.photoservice.addNewToGallery();
-  }
+  } */
+
+ 
 
 }
