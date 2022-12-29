@@ -24,11 +24,9 @@ roles:Roles[];
  this.user=this.auth.userConnect;
  this.organisations= this.user.Org;
  this.warehouses= this.user.Wh;
- console.log('mes wh'+ this.warehouses);
+ console.log('mes wh :'+ this.warehouses);
  this.roles= this.user.Role;
-
-
-  }
+ }
 
 
   back(){

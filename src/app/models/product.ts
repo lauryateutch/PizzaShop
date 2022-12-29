@@ -5,4 +5,5 @@ export class Product {
   amount: number;
   country: string;
   triggers:string;
+  image: string;  
 }
