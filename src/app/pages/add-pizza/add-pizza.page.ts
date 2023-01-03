@@ -4,6 +4,8 @@ import { IonicSlides, IonSlides } from '@ionic/angular';
 import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/app/models/product';
 import { Slide } from 'src/app/models/slide';
+import { Orderlines } from 'src/app/models/orderlines';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -26,6 +28,7 @@ export class AddPizzaPage implements OnInit {
   };
 
   product: Product[];
+  list_orderlines: Product[];
 
   // template to create several slide by dividing by different items group
    template: {
@@ -34,12 +37,16 @@ export class AddPizzaPage implements OnInit {
     Product:Product[];
   }[] = []; 
 
+  clicked:boolean= false;
+
   //template= new Slide(1,this.product);
 
   constructor(private photoservice: PhotoService, private cartService: CartService) { }
 
   ngOnInit() {
  this.showGridProduct();
+ this.list_orderlines= this.cartService.getCart();
+ 
 
   }
 
@@ -80,18 +87,27 @@ if (restSlide == 0){
   //console.log('template'+ template);
 
  }
+}
+})
+}
 
+
+addItem(product){
+
+this.cartService.addProduct(product);
+this.clicked= true;
+console.log( 'voici le tab:'+ this.list_orderlines);
 
 
 
 }
 
+decreaseCartItem(product){
+  this.cartService.decreaseProduct(product);
+}
 
- }
-
-)
-
-
+increaseCartItem(product){
+  this.cartService.addProduct(product);
 }
 
 

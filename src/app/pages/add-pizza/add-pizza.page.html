@@ -8,63 +8,21 @@
 </ion-header>
 
 <ion-content>
-<!--  
-  <ion-text color="primary">
-    <h1>let 's add a new pizza</h1>
-  </ion-text>
-
-  <ion-card>
-    <ion-card-content>
-      <form action=" ">
 
 
-        <ion-label>Pizza Name</ion-label>
-        <ion-item>
-          <ion-input type="text" placeholder=""></ion-input>
-        </ion-item>
-
-        <ion-label>origin of the pizza </ion-label>
-        <ion-item>
-          <ion-input type="text" placeholder=""></ion-input>
-        </ion-item>
-
-        <ion-label>add a price </ion-label>
-        <ion-item>
-          <ion-input type="number" placeholder=""></ion-input>
-        </ion-item>
-
-        <ion-label>add a picture  </ion-label>
-        <ion-item>
-          <ion-button (click)="addPhotoToGallery()" expand="block" fill="clear" shape="round">
-            <ion-icon slot="start" name="camera"></ion-icon>          </ion-button>
-        </ion-item>
-
-        
-
-
-
-
-
-      </form>
-    </ion-card-content>
-  </ion-card> -->
-
- 
-
-  
   <ion-label id="slidePrev"  >
     <ion-icon name="caret-back-circle" (click)="swipePrev()"></ion-icon>
   </ion-label>
 
-<ion-slides mode="ios" pager="true" id="slides"  scrollbar="ios"  [options]="slideOpts" #mySlider>
+<ion-slides mode="ios" pager="true" id="slides"  scrollbar="ios" class="slides" [options]="slideOpts" #mySlider>
   <ion-slide class="ion-padding-bottom" *ngFor="let slide of template" >
     <!-- <h1>Awesome Slide Content</h1> -->
 
-    <ion-grid fixed>
+    <ion-grid fixed class="margin">
       <ion-row class="ion-justify-content-center">
         <ion-col  size-xs="4" size-lg="3" size-md="3" class="ion-text-center" *ngFor="let product of slide.Product">
           <div >
-            <div class="card" (click)="onClick()">
+            <div class="card" (click)="addItem(product)">
 
               <div  class="ItemImage">
                  <img [src]="product.image" alt="image produit">
@@ -79,7 +37,10 @@
                 </ion-text>
                 
               </ion-label>
-              <ion-label  class="Qte"></ion-label>
+              <ion-label *ngIf="product.amount !== 0" class="Qte">{{product.amount}}
+
+              </ion-label>
+
 
 
             </div>
@@ -96,12 +57,75 @@
 </ion-slides>
 
 
-
-
-
   <ion-label id="slideNext">
     <ion-icon name="caret-forward-circle" (click)="swipeNext()"></ion-icon>
   </ion-label>
+
+
+
+  <div class="Header">
+   <h2>Orderlines</h2>
+  </div>
+
+  <div class="content">
+
+    <div class="Orderlines"  *ngFor="let orderline of list_orderlines">
+
+      <ion-grid >
+        <ion-row>
+          <ion-col size="4" class="image">
+            <figure>
+              <ion-img [src]="orderline.image">
+                
+              </ion-img>
+              <figcaption>
+                {{orderline.name}}
+              </figcaption>
+
+            </figure>
+            
+            
+
+          </ion-col>
+          <ion-col class="name" size="4">
+            <p>{{orderline.price}}</p> 
+            <p>total price </p>
+          </ion-col>
+          <ion-col class="qty" size="4">
+
+            <ion-button color="medium" fill="clear" id="remove-circle" (click)="decreaseCartItem(orderline)" >
+              <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
+            </ion-button>
+            <p>{{orderline.amount}}</p>
+            <ion-button color="medium" fill="clear" id="add-circle" (click)="increaseCartItem(orderline)">
+              <ion-icon name="add-circle" slot="icon-only"></ion-icon>
+            </ion-button>
+            <p> {{orderline.price * orderline.amount   | currency:'USD'}} </p>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+     </div>
+
+
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+  
+   
+
+
+
 
 
 
